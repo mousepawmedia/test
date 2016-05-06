@@ -5,6 +5,6 @@ using std::endl;
 
 int main()
 {
-    std::cout << "Hello, world! 123 ABCDEF" << std::endl;
+    std::cout << "Hello, world! 123 ABCDEFG" << std::endl;
     return 0;
 }
