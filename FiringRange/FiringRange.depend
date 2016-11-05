@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1467165214 source:/home/jason/Code/Repositories/test-git/FiringRange/main.cpp
+	<iostream>
+	"rigid_stack.hpp"
+
+1467165270 /home/jason/Code/Repositories/test-git/FiringRange/rigid_stack.hpp
+	<cstdint>
+	<stdexcept>
+
