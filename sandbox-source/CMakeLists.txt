@@ -74,7 +74,6 @@ endif()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../bin/$<CONFIG>")
 
-include_directories(../cpgf/include)
 include_directories(include)
 
 add_executable(sandbox
@@ -82,7 +81,10 @@ add_executable(sandbox
 
 )
 
-# Link against PawLIB and CPGF
+# Link against CPGF
+include_directories(${LIBS_DIR}/include)
+target_link_libraries(sandbox ${LIBS_DIR}/lib/libcpgf.a)
+
+# Link against PawLIB
 include_directories(${PAWLIB_DIR}/include)
-target_link_libraries(sandbox ${PAWLIB_DIR}/lib/libcpgf.a)
 target_link_libraries(sandbox ${PAWLIB_DIR}/lib/libpawlib.a)

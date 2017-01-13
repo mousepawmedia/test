@@ -3,6 +3,6 @@
 
 int main()
 {
-    std::cout << "Hello, world!" << std::endl;
+    pawlib::ioc << "Hello, world!" << pawlib::io_end;
     return 0;
 }
