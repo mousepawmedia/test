@@ -81,9 +81,16 @@ add_executable(sandbox
 
 )
 
-# Link against CPGF
+# Link against third-party dependencies: CPGF, Eigen, Opus, pugixml, SFML
 include_directories(${LIBS_DIR}/include)
 target_link_libraries(sandbox ${LIBS_DIR}/lib/libcpgf.a)
+target_link_libraries(sandbox ${LIBS_DIR}/lib/libopus.a)
+target_link_libraries(sandbox ${LIBS_DIR}/lib/libpugixml.a)
+target_link_libraries(sandbox ${LIBS_DIR}/lib/libsfml-audio-s.a)
+target_link_libraries(sandbox ${LIBS_DIR}/lib/libsfml-graphics-s.a)
+target_link_libraries(sandbox ${LIBS_DIR}/lib/libsfml-network-s.a)
+target_link_libraries(sandbox ${LIBS_DIR}/lib/libsfml-system-s.a)
+target_link_libraries(sandbox ${LIBS_DIR}/lib/libsfml-window-s.a)
 
 # Link against PawLIB
 include_directories(${PAWLIB_DIR}/include)
