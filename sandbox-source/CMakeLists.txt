@@ -82,15 +82,19 @@ add_executable(sandbox
 )
 
 # Link against third-party dependencies: CPGF, Eigen, Opus, pugixml, SFML
-include_directories(${LIBS_DIR}/include)
-target_link_libraries(sandbox ${LIBS_DIR}/lib/libcpgf.a)
-target_link_libraries(sandbox ${LIBS_DIR}/lib/libopus.a)
-target_link_libraries(sandbox ${LIBS_DIR}/lib/libpugixml.a)
-target_link_libraries(sandbox ${LIBS_DIR}/lib/libsfml-audio-s.a)
-target_link_libraries(sandbox ${LIBS_DIR}/lib/libsfml-graphics-s.a)
-target_link_libraries(sandbox ${LIBS_DIR}/lib/libsfml-network-s.a)
-target_link_libraries(sandbox ${LIBS_DIR}/lib/libsfml-system-s.a)
-target_link_libraries(sandbox ${LIBS_DIR}/lib/libsfml-window-s.a)
+include_directories(${CPGF_DIR}/include)
+include_directories(${EIGEN_DIR}/include)
+include_directories(${OPUS_DIR}/include)
+include_directories(${PUGIXML_DIR}/include)
+include_directories(${SFML_DIR}/include)
+target_link_libraries(sandbox ${CPGF_DIR}/lib/libcpgf.a)
+target_link_libraries(sandbox ${OPUS_DIR}/lib/libopus.a)
+target_link_libraries(sandbox ${PUGIXML_DIR}/lib/libpugixml.a)
+target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-audio-s.a)
+target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-graphics-s.a)
+target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-network-s.a)
+target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-system-s.a)
+target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-window-s.a)
 
 # Link against PawLIB
 include_directories(${PAWLIB_DIR}/include)
