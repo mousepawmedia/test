@@ -74,6 +74,26 @@ endif()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../bin/$<CONFIG>")
 
+# NOTE: All of the commented-out stuff below was an attempt to get SFML working.
+# It is *so* not worth the pain. We need to leave this here, however, until we
+# get an alternative (i.e. Cinder) working.
+#find_package(SFML 2.4 COMPONENTS graphics audio window system network)
+#set(CMAKE_MODULE_PATH ${CMAKE_HOME_DIRECTORY}/cmake_modules/)
+#set(SFML_STATIC_LIBRARIES true)
+#set(SFML_ROOT ${SFML_DIR})
+#include(${CMAKE_HOME_DIRECTORY}/cmake_modules/FindSFML.cmake)
+#set(SFML_STATIC_LIBRARIES TRUE)
+#add_definitions(-DSFML_STATIC)
+#list(APPEND CMAKE_MODULE_PATH	"${PROJECT_SOURCE_DIR}/cmake/modules")
+#SET(BUILD_SHARED_LIBRARIES OFF)
+#set(CMAKE_MODULE_PATH ${CMAKE_HOME_DIRECTORY}/cmake_modules/)
+#set(SFML_STATIC_LIBRARIES true)
+#set(SFML_ROOT ${SFML_DIR})
+#set(SFML_INCLUDE_DIR ${SFML_DIR}/include)
+#SET(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${SFML_INCLUDE_DIR})
+#find_package(SFML 2.4 COMPONENTS graphics audio window system network)
+
 include_directories(include)
 
 add_executable(sandbox
@@ -81,20 +101,20 @@ add_executable(sandbox
 
 )
 
-# Link against third-party dependencies: CPGF, Eigen, Opus, pugixml, SFML
+# Link against third-party dependencies: CPGF, Eigen, Opus, pugixml
 include_directories(${CPGF_DIR}/include)
 include_directories(${EIGEN_DIR}/include)
 include_directories(${OPUS_DIR}/include)
 include_directories(${PUGIXML_DIR}/include)
-include_directories(${SFML_DIR}/include)
+#include_directories(${SFML_DIR}/include)
 target_link_libraries(sandbox ${CPGF_DIR}/lib/libcpgf.a)
 target_link_libraries(sandbox ${OPUS_DIR}/lib/libopus.a)
 target_link_libraries(sandbox ${PUGIXML_DIR}/lib/libpugixml.a)
-target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-audio-s.a)
-target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-graphics-s.a)
-target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-network-s.a)
-target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-system-s.a)
-target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-window-s.a)
+#target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-system-s.a)
+#target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-window-s.a)
+#target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-graphics-s.a)
+#target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-audio-s.a)
+#target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-network-s.a)
 
 # Link against PawLIB
 include_directories(${PAWLIB_DIR}/include)

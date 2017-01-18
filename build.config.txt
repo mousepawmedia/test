@@ -23,7 +23,7 @@
 
 ##### THIRD-PARTY DEPENDENCIES #####
 #
-# This sets the path to CPGF, Eigen, Opus, pugixml, and SFML.
+# This sets the path to CPGF, Eigen, Opus, and pugixml.
 # The build system will look for `lib/` and `include/' at this location.
 #
 # The default for all is '${CMAKE_HOME_DIRECTORY}/../../lib-git/libs', which
@@ -45,10 +45,6 @@ set(OPUS_DIR
 )
 
 set(PUGIXML_DIR
-	${CMAKE_HOME_DIRECTORY}/../../lib-git/libs
-)
-
-set(SFML_DIR
 	${CMAKE_HOME_DIRECTORY}/../../lib-git/libs
 )
 
