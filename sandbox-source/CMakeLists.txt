@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.1)
 
 #Name your project here
 project("Sandbox")
+set(TARGET_NAME "sandbox")
 
 message("Using ${CONFIG_FILENAME}.config")
 include(${CMAKE_HOME_DIRECTORY}/../${CONFIG_FILENAME}.config)
@@ -74,48 +75,46 @@ endif()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../bin/$<CONFIG>")
 
-# NOTE: All of the commented-out stuff below was an attempt to get SFML working.
-# It is *so* not worth the pain. We need to leave this here, however, until we
-# get an alternative (i.e. Cinder) working.
-#find_package(SFML 2.4 COMPONENTS graphics audio window system network)
-#set(CMAKE_MODULE_PATH ${CMAKE_HOME_DIRECTORY}/cmake_modules/)
-#set(SFML_STATIC_LIBRARIES true)
-#set(SFML_ROOT ${SFML_DIR})
-#include(${CMAKE_HOME_DIRECTORY}/cmake_modules/FindSFML.cmake)
-#set(SFML_STATIC_LIBRARIES TRUE)
-#add_definitions(-DSFML_STATIC)
-#list(APPEND CMAKE_MODULE_PATH	"${PROJECT_SOURCE_DIR}/cmake/modules")
-#SET(BUILD_SHARED_LIBRARIES OFF)
-#set(CMAKE_MODULE_PATH ${CMAKE_HOME_DIRECTORY}/cmake_modules/)
-#set(SFML_STATIC_LIBRARIES true)
-#set(SFML_ROOT ${SFML_DIR})
-#set(SFML_INCLUDE_DIR ${SFML_DIR}/include)
-#SET(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
-#include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${SFML_INCLUDE_DIR})
-#find_package(SFML 2.4 COMPONENTS graphics audio window system network)
-
 include_directories(include)
 
-add_executable(sandbox
-    main.cpp
-
-)
-
-# Link against third-party dependencies: CPGF, Eigen, Opus, pugixml
+# Include headers of dependencies.
 include_directories(${CPGF_DIR}/include)
 include_directories(${EIGEN_DIR}/include)
 include_directories(${OPUS_DIR}/include)
 include_directories(${PUGIXML_DIR}/include)
-#include_directories(${SFML_DIR}/include)
-target_link_libraries(sandbox ${CPGF_DIR}/lib/libcpgf.a)
-target_link_libraries(sandbox ${OPUS_DIR}/lib/libopus.a)
-target_link_libraries(sandbox ${PUGIXML_DIR}/lib/libpugixml.a)
-#target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-system-s.a)
-#target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-window-s.a)
-#target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-graphics-s.a)
-#target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-audio-s.a)
-#target_link_libraries(sandbox ${SFML_DIR}/lib/libsfml-network-s.a)
-
-# Link against PawLIB
 include_directories(${PAWLIB_DIR}/include)
-target_link_libraries(sandbox ${PAWLIB_DIR}/lib/libpawlib.a)
+
+add_executable(${TARGET_NAME}
+    main.cpp
+
+)
+
+# Link against dependencies.
+target_link_libraries(${TARGET_NAME} ${CPGF_DIR}/lib/libcpgf.a)
+target_link_libraries(${TARGET_NAME} ${OPUS_DIR}/lib/libopus.a)
+target_link_libraries(${TARGET_NAME} ${PUGIXML_DIR}/lib/libpugixml.a)
+target_link_libraries(${TARGET_NAME} ${PAWLIB_DIR}/lib/libpawlib.a)
+
+if(COMPILERTYPE STREQUAL "clang")
+    if(SAN STREQUAL "address")
+        add_definitions(-O1 -fsanitize=address -fno-optimize-sibling-calls -fno-omit-frame-pointer)
+        set_property(TARGET ${TARGET_NAME} APPEND_STRING PROPERTY LINK_FLAGS " -fsanitize=address")
+        message("Compiling with AddressSanitizer.")
+    elseif(SAN STREQUAL "leak")
+        add_definitions(-fsanitize=leak)
+        set_property(TARGET ${TARGET_NAME} APPEND_STRING PROPERTY LINK_FLAGS " -fsanitize=leak")
+        message("Compiling with LeakSanitizer.")
+    elseif(SAN STREQUAL "memory")
+        add_definitions(-O1 -fsanitize=memory -fno-optimize-sibling-calls -fno-omit-frame-pointer)
+        set_property(TARGET ${TARGET_NAME} APPEND_STRING PROPERTY LINK_FLAGS " -fsanitize=memory")
+        message("Compiling with MemorySanitizer.")
+    elseif(SAN STREQUAL "thread")
+        add_definitions(-O1 -fsanitize=thread)
+        set_property(TARGET ${TARGET_NAME} APPEND_STRING PROPERTY LINK_FLAGS " -fsanitize=thread")
+        message("Compiling with ThreadSanitizer.")
+    elseif(SAN STREQUAL "undefined")
+        add_definitions(-fsanitize=undefined)
+        set_property(TARGET ${TARGET_NAME} APPEND_STRING PROPERTY LINK_FLAGS " -fsanitize=undefined")
+        message("Compiling with UndefiniedBehaviorSanitizer.")
+    endif()
+endif()

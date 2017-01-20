@@ -8,9 +8,16 @@ none:
 	@echo "  make cleandebug"
 	@echo "  make cleanrelease"
 	@echo
+	@echo "Clang Sanitizers (requires Debug build and Clang.)"
+	@echo "  SAN=address     Use AddressSanitizer"
+	@echo "  SAN=leak        Use LeakSanitizer w/o AddressSanitizer (Linux only)"
+	@echo "  SAN=memory      Use MemorySanitizer"
+	@echo "  SAN=thread      Use ThreadSanitizer"
+	@echo "  SAN=undefined   Use UndefiniedBehaviorSanitizer"
+	@echo
 	@echo "Optional Architecture"
-	@echo "  ARCH=32	Make x86 build (-m32)"
-	@echo "  ARCH=64	Make x64 build (-m64)"
+	@echo "  ARCH=32         Make x86 build (-m32)"
+	@echo "  ARCH=64         Make x64 build (-m64)"
 	@echo
 	@echo "Use Configuration File"
 	@echo "  CONFIG=foo      Uses the configuration file 'foo.config'"
@@ -29,7 +36,7 @@ cleanrelease:
 	$(MAKE) cleanrelease -C sandbox-source
 
 debug:
-	$(MAKE) debug CONFIG=$(CONFIG) -C sandbox-source
+	$(MAKE) debug ARCH=$(ARCH) SAN=$(SAN) CONFIG=$(CONFIG) -C sandbox-source
 	@rm -f sandbox_debug
 	@ln -s sandbox-source/bin/Debug/sandbox sandbox_debug
 	@echo "-------------"
@@ -39,7 +46,7 @@ debug:
 	@echo "-------------"
 
 release:
-	$(MAKE) release CONFIG=$(CONFIG) -C sandbox-source
+	$(MAKE) release ARCH=$(ARCH) CONFIG=$(CONFIG) -C sandbox-source
 	@rm -f sandbox
 	@ln -s sandbox-source/bin/Release/sandbox sandbox
 	@echo "-------------"

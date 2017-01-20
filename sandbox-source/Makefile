@@ -10,6 +10,8 @@ else
 	P_CONF_PATH = $(P_DEF_CONF)
 endif
 
+SAN = ""
+
 MK_DIR = @cmake -E make_directory
 CH_DIR = @cmake -E chdir
 ECHO = @cmake -E echo
@@ -29,9 +31,16 @@ none:
 	@echo "  make cleandebug"
 	@echo "  make cleanrelease"
 	@echo
+	@echo "Clang Sanitizers (requires Debug build and Clang.)"
+	@echo "  SAN=address     Use AddressSanitizer"
+	@echo "  SAN=leak        Use LeakSanitizer w/o AddressSanitizer (Linux only)"
+	@echo "  SAN=memory      Use MemorySanitizer"
+	@echo "  SAN=thread      Use ThreadSanitizer"
+	@echo "  SAN=undefined   Use UndefiniedBehaviorSanitizer"
+	@echo
 	@echo "Optional Architecture"
-	@echo "  ARCH=32	Make x86 build (-m32)"
-	@echo "  ARCH=64	Make x64 build (-m64)"
+	@echo "  ARCH=32         Make x86 build (-m32)"
+	@echo "  ARCH=64         Make x64 build (-m64)"
 	@echo
 	@echo "Use Configuration File"
 	@echo "  CONFIG=foo      Uses the configuration file 'foo.config'"
@@ -52,7 +61,7 @@ cleanrelease:
 
 debug:
 	$(MK_DIR) $(TEMP_DIR)/Debug$(ARCH)
-	$(CH_DIR) $(TEMP_DIR)/Debug$(ARCH) $(CMAKE) $(T_DEBUG) -DARCH=$(ARCH) $(P_CONF)$(P_CONF_PATH)
+	$(CH_DIR) $(TEMP_DIR)/Debug$(ARCH) $(CMAKE) $(T_DEBUG) -DARCH=$(ARCH) -DSAN=$(SAN) $(P_CONF)$(P_CONF_PATH)
 	$(EXEC_BUILD)/Debug$(ARCH) make $(TARGET)
 
 release:
