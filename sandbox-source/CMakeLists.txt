@@ -78,6 +78,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../bin/$<CONF
 include_directories(include)
 
 # Include headers of dependencies.
+include_directories(${CINDER_DIR}/include)
 include_directories(${CPGF_DIR}/include)
 include_directories(${EIGEN_DIR}/include)
 include_directories(${OPUS_DIR}/include)
@@ -90,6 +91,7 @@ add_executable(${TARGET_NAME}
 )
 
 # Link against dependencies.
+target_link_libraries(${TARGET_NAME} ${CINDER_DIR}/lib/libcinder.a)
 target_link_libraries(${TARGET_NAME} ${CPGF_DIR}/lib/libcpgf.a)
 target_link_libraries(${TARGET_NAME} ${OPUS_DIR}/lib/libopus.a)
 target_link_libraries(${TARGET_NAME} ${PUGIXML_DIR}/lib/libpugixml.a)

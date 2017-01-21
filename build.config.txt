@@ -48,6 +48,21 @@ set(PUGIXML_DIR
 	${CMAKE_HOME_DIRECTORY}/../../lib-git/libs
 )
 
+##### CINDER #####
+#
+# This sets the path to Cinder, which we have in a separate repository from
+# the other third-party dependencies (since it is in BETA).
+#
+# The default for all is '${CMAKE_HOME_DIRECTORY}/../../cinder-git/libs', which
+# assumes a copy of the cinder-git repository in the same directory as this
+# repository folder.
+#
+# 'make ready' would need to be run in cinder-git first.
+
+set(CINDER_DIR
+	${CMAKE_HOME_DIRECTORY}/../../cinder-git/libs
+)
+
 ##### PAWLIB #####
 #
 # This sets the path to PawLIB.
