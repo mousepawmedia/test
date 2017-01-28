@@ -21,7 +21,9 @@ BUILD_DIR = lib
 
 EXEC_BUILD = $(CH_DIR) $(TEMP_DIR)
 
-none:
+none: help
+
+help:
 	@echo "=== Sandbox ==="
 	@echo "Select a build target:"
 	@echo "  make debug"
@@ -69,4 +71,4 @@ release:
 	$(CH_DIR) $(TEMP_DIR)/Release$(ARCH) $(CMAKE) $(T_RELEASE) -DARCH=$(ARCH) $(P_CONF)$(P_CONF_PATH)
 	$(EXEC_BUILD)/Release$(ARCH) make $(TARGET)
 
-.PHONY: clean cleandebug cleanrelease
+.PHONY: clean cleandebug cleanrelease help

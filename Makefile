@@ -1,4 +1,6 @@
-none:
+none: help
+
+help:
 	@echo "=== Sandbox ==="
 	@echo "Select a build target:"
 	@echo "  make debug"
@@ -55,4 +57,4 @@ release:
 	@echo "The link './sandbox' has been created for convenience."
 	@echo "-------------"
 
-.PHONY: clean cleandebug cleanrelease
+.PHONY: clean cleandebug cleanrelease help

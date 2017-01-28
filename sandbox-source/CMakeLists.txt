@@ -87,8 +87,7 @@ include_directories(${PUGIXML_DIR}/include)
 include_directories(${PAWLIB_DIR}/include)
 
 add_executable(${TARGET_NAME}
-    main.cpp
-
+    main.cpp    
 )
 
 # Link against dependencies.
