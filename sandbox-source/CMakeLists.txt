@@ -89,11 +89,12 @@ add_executable(${TARGET_NAME}
     main.cpp
 )
 
+# NOTE: CINDER CURRENTLY DISABLED
 # Link against Cinder and its dependencies.
-find_package(cinder REQUIRED PATHS ${CINDER_DIR}/ogl/Release)
-target_link_libraries(${TARGET_NAME} cinder)
-target_link_libraries(${TARGET_NAME} ${CINDER_DIR}/libboost_filesystem.a)
-target_link_libraries(${TARGET_NAME} ${CINDER_DIR}/libboost_system.a)
+#find_package(cinder REQUIRED PATHS ${CINDER_DIR}/ogl/Release)
+#target_link_libraries(${TARGET_NAME} cinder)
+#target_link_libraries(${TARGET_NAME} ${CINDER_DIR}/libboost_filesystem.a)
+#target_link_libraries(${TARGET_NAME} ${CINDER_DIR}/libboost_system.a)
 
 # Link against other dependencies.
 target_link_libraries(${TARGET_NAME} ${PAWLIB_DIR}/lib/libpawlib.a)

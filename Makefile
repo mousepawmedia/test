@@ -30,12 +30,16 @@ help:
 
 clean:
 	$(MAKE) clean -C sandbox-source
+	rm -f sandbox_debug
+	rm -f sandbox
 
 cleandebug:
 	$(MAKE) cleandebug -C sandbox-source
+	rm -f sandbox_debug
 
 cleanrelease:
 	$(MAKE) cleanrelease -C sandbox-source
+	rm -f sandbox
 
 debug:
 	$(MAKE) debug ARCH=$(ARCH) SAN=$(SAN) CONFIG=$(CONFIG) -C sandbox-source
