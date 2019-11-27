@@ -25,7 +25,8 @@
 
     "files.associations": {
         "array": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "string": "cpp"
     },
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,

@@ -39,9 +39,9 @@
 # on how to contribute to our projects.
 
 # CHANGEME: Project name
-NAME = "Sandbox (Static Library)"
+NAME = "Sandbox (Tester)"
 # CHANGEME: Set to 'lib' or 'bin'
-BUILD_DIR = lib
+BUILD_DIR = bin
 
 CMAKE = cmake ../.. -G"Unix Makefiles"
 T_DEBUG = -DCMAKE_BUILD_TYPE=Debug
@@ -59,6 +59,12 @@ MK_DIR = @cmake -E make_directory
 CH_DIR = @cmake -E chdir
 RM_DIR = @cmake -E remove_directory
 ECHO = @cmake -E echo
+
+# CHANGEME: Project name
+NAME = "Anari Tester"
+
+# CHANGEME: Set to 'lib' or 'bin'
+BUILD_DIR = bin
 
 TEMP_DIR = build_temp
 

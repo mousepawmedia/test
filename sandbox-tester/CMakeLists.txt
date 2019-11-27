@@ -42,10 +42,10 @@
 cmake_minimum_required(VERSION 3.1)
 
 # CHANGEME: Name your project here
-project("Sandbox")
+project("Sandbox Tester")
 
 # CHANGEME: Specify output binary name
-set(TARGET_NAME "sandbox")
+set(TARGET_NAME "sandbox-tester")
 
 message("Using ${CONFIG_FILENAME}.config")
 include(${CMAKE_HOME_DIRECTORY}/../${CONFIG_FILENAME}.config)
@@ -117,8 +117,8 @@ elseif(COMPILERTYPE STREQUAL "clang")
 endif()
 
 # CHANGEME: Select appropriate output (lib or bin)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../lib/$<CONFIG>")
-#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../bin/$<CONFIG>")
+#set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../lib/$<CONFIG>")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../bin/$<CONFIG>")
 
 include_directories(include)
 
@@ -130,6 +130,7 @@ find_library(SDL2_LIB SDL2)
 find_path(SDL2_INCLUDE_DIR SDL2/SDL.h)
 
 # CHANGEME: Include headers of dependencies.
+include_directories(${CMAKE_HOME_DIRECTORY}/../sandbox-source/include)
 include_directories(${PAWLIB_DIR}/include)
 include_directories(${CPGF_DIR}/include)
 include_directories(${EIGEN_DIR}/include)
@@ -141,15 +142,14 @@ include_directories(${CAIRO_INCLUDE_DIR}/cairo)
 include_directories(${SDL2_INCLUDE_DIR}/SDL2)
 
 #CHANGEME: Select appropriate format.
-add_library(${TARGET_NAME}
-#add_executable(${TARGET_NAME}
+#add_library(${TARGET_NAME}
+add_executable(${TARGET_NAME}
     # CHANGEME: Include files to compile.
-    include/sandbox/hello.hpp
-
-    src/hello.cpp
+    main.cpp
 )
 
 # CHANGEME: Link against dependencies.
+target_link_libraries(${TARGET_NAME} ${CMAKE_HOME_DIRECTORY}/../sandbox-source/lib/$<CONFIG>/libsandbox.a)
 target_link_libraries(${TARGET_NAME} ${CAIRO_LIB})
 target_link_libraries(${TARGET_NAME} ${SDL2_LIB})
 target_link_libraries(${TARGET_NAME} ${PAWLIB_DIR}/lib/libpawlib.a)
