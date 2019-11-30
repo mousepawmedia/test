@@ -64,14 +64,14 @@ RUN \
 
 # Clone and build third-party dependencies
 RUN \
-    git clone https://github.com/mousepawmedia/libdeps.git && \
-    cd libdeps/opus && autoreconf -f -i && cd .. && make ready && cd
+    cd /opt && git clone https://github.com/mousepawmedia/libdeps.git && \
+    cd libdeps/opus && autoreconf -f -i && cd .. && make ready
 
 # Clone and build PawLIB
 RUN \
-    git clone https://github.com/mousepawmedia/pawlib.git && \
-    cd pawlib && make ready && cd
+    cd /opt && git clone https://github.com/mousepawmedia/pawlib.git && \
+    cd pawlib && make ready
 
 # Clone and build this repository
 RUN \
-    cd /home && ls
+    cd /opt && ls
