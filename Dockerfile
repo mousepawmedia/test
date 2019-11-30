@@ -74,4 +74,4 @@ RUN \
 
 # Clone and build this repository
 RUN \
-    cd && apt-get install -y tree; tree -L 3
+    ls / && ls /home && ls /opt && ls /var
