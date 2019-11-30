@@ -75,4 +75,4 @@ RUN \
 # Clone and build this repository
 RUN \
     git clone https://github.com/mousepawmedia/test.git && \
-    cd test && make tester_debug && ./tester_debug
+    cd test && make tester_debug
