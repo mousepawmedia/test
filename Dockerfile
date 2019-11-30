@@ -74,5 +74,4 @@ RUN \
 
 # Clone and build this repository
 RUN \
-    git clone https://github.com/mousepawmedia/test.git && \
-    cd test && make tester_debug
+    pwd && ls
