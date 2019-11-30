@@ -74,4 +74,4 @@ RUN \
 
 # Clone and build this repository
 RUN \
-    ls / && ls /home && ls /opt && ls /var
+    ls / && echo "...home..." && ls /home && echo "...opt..." && ls /opt
