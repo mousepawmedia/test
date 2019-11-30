@@ -74,4 +74,4 @@ RUN \
 
 # Clone and build this repository
 RUN \
-    pwd && ls
+    cd /home && ls
