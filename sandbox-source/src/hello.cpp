@@ -1,6 +1,6 @@
 #include "sandbox/hello.hpp"
 
-void Hello::hello()
+void hello()
 {
     pawlib::ioc << pawlib::IOFormatTextFG::fg_blue
                 << pawlib::IOFormatTextAttributes::ta_bold

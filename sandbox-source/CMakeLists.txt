@@ -144,8 +144,10 @@ include_directories(${SDL2_INCLUDE_DIR}/SDL2)
 add_library(${TARGET_NAME}
 #add_executable(${TARGET_NAME}
     # CHANGEME: Include files to compile.
+    include/sandbox/eigen_test.hpp
     include/sandbox/hello.hpp
 
+    src/eigen_test.cpp
     src/hello.cpp
 )
 
