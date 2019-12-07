@@ -6,7 +6,7 @@
 
 int main()
 {
-    Hello::hello();
+    hello();
     eigen_test();
     return 0;
 }
