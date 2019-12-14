@@ -15,7 +15,7 @@ void eigen_test()
     answer(2,1) = 0;
     answer(2,2) = answer(1,2);
 
-    //pawlib::ioc << answer << pawlib::IOCtrl::endl;  // does not work
+    //ioc << answer << IOCtrl::endl;  // does not work
     std::cout << "Testing Eigen..." << std::endl;
     std::cout << answer << std::endl;
 }

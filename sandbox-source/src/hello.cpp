@@ -2,8 +2,8 @@
 
 void hello()
 {
-    pawlib::ioc << pawlib::IOFormatTextFG::blue
-                << pawlib::IOFormatTextAttr::bold
-                << "Hello, world!"
-                << pawlib::IOCtrl::endl;
+    ioc << IOFormatTextFG::blue
+        << IOFormatTextAttr::bold
+        << "Hello, world!"
+        << IOCtrl::endl;
 }

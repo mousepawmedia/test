@@ -146,9 +146,11 @@ add_library(${TARGET_NAME}
     # CHANGEME: Include files to compile.
     include/sandbox/eigen_test.hpp
     include/sandbox/hello.hpp
+    include/sandbox/test_test.hpp
 
     src/eigen_test.cpp
     src/hello.cpp
+    src/test_test.cpp
 )
 
 # CHANGEME: Link against dependencies.

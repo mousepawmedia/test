@@ -1,7 +1,7 @@
-/** Sandbox Tester
+/** Hello [Sandbox]
   * Version: 1.0
   *
-  * The tester for the Sandbox.
+  * MousePaw Media's own Hello World.
   *
   * Author(s): Jason C. McDonald
   */
@@ -41,54 +41,51 @@
  * on how to contribute to our projects.
  */
 
-#include <iostream>
-#include <string>
+#ifndef SANDBOX_TEST_TEST_HPP
+#define SANDBOX_TEST_TEST_HPP
 
-#include "pawlib/goldilocks_shell.hpp"
-#include "pawlib/iochannel.hpp"
+#include "pawlib/goldilocks.hpp"
+#include "pawlib/goldilocks_assertions.hpp"
 
-#include "sandbox/hello.hpp"
-#include "sandbox/test_test.hpp"
-
-/** Temporary test code goes in this function ONLY.
-  * All test code that is needed long term should be
-  * moved to a dedicated Goldilocks Test and TestSuite.
-  */
-void test_code()
+class Test_AssertEqual : public Test
 {
-    hello();
-    return;
-}
+    public:
+    Test_AssertEqual() = default;
 
-/////// WARNING: DO NOT ALTER BELOW THIS POINT! ///////
-
-int main(int argc, char* argv[])
-{
-    //Set up signal handling.
-    ioc.configure_echo(IOEchoMode::cout);
-
-    GoldilocksShell* shell = new GoldilocksShell(">> ");
-    shell->register_suite<Test_TestSuite>("sB01");
-
-    // If we got command-line arguments.
-    if(argc > 1)
+    testdoc_t get_title() override
     {
-        return shell->command(argc, argv);
-    }
-    else
-    {
-        ioc << IOFormatTextAttr::bold << IOFormatTextFG::blue
-            << "===== Sandbox Tester =====\n" << IOCtrl::endl;
-
-        test_code();
-
-        // Shift control to the interactive console.
-        shell->interactive();
+        return "Test Goldilocks Assert Equal";
     }
 
-    // Delete our GoldilocksShell.
-    delete shell;
-    shell = 0;
+    testdoc_t get_docs() override
+    {
+        return "Tests the PL_ASSERT_EQUAL with two integers.";
+    }
 
-    return 0;
-}
+    bool run() override
+    {
+        int left = 42;
+        int right = 42;
+        PL_ASSERT_EQUAL(left, right);
+        return true;
+    }
+
+    ~Test_AssertEqual() = default;
+};
+
+class Test_TestSuite : public TestSuite
+{
+    public:
+    Test_TestSuite() = default;
+
+    testdoc_t get_title() override
+    {
+        return "Test Golidlocks Tests";
+    }
+
+    void load_tests() override;
+
+    ~Test_TestSuite() = default;
+};
+
+#endif
