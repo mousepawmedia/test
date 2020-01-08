@@ -49,6 +49,7 @@
 
 #include "sandbox/hello.hpp"
 #include "sandbox/test_test.hpp"
+#include "sandbox/eigen_test.hpp"
 
 /** Temporary test code goes in this function ONLY.
   * All test code that is needed long term should be
@@ -56,7 +57,8 @@
   */
 void test_code()
 {
-    hello();
+    eigen_test();
+    //hello();
     return;
 }
 

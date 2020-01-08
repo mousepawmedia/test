@@ -47,7 +47,6 @@
 #define SANDBOX_EIGEN_TEST_HPP
 
 #include <iostream>
-#include <Eigen/Dense>
 
 void eigen_test();
 
