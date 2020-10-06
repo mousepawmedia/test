@@ -1,5 +1,5 @@
 # CMake Config for Executable (MousePaw Media Build System)
-# Version: 2.2.0
+# Version: 2.2.1
 # Tailored For: Sandbox
 #
 # Author(s): Jason C. McDonald
@@ -96,8 +96,8 @@ else()
 endif()
 
 # Our global compiler flags.
-#add_definitions(-Wall -Wextra -Werror)
-add_definitions(-Wall -Wextra)
+add_definitions(-Wall -Wextra -Werror)
+#add_definitions(-Wall -Wextra)
 
 if(COMPILERTYPE STREQUAL "gcc")
     # Set debug flags. -g is a default.
@@ -117,8 +117,8 @@ elseif(COMPILERTYPE STREQUAL "clang")
 endif()
 
 # CHANGEME: Select appropriate output (lib or bin)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../lib/$<CONFIG>")
-#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../bin/$<CONFIG>")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../lib/${CMAKE_BUILD_TYPE}")
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../bin/${CMAKE_BUILD_TYPE}")
 
 include_directories(include)
 
