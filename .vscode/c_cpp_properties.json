@@ -82,10 +82,14 @@
             "name": "Win32",
             "includePath": [
                 "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include",
-                "${workspaceRoot}/../libdeps/libs/include",
-                "${workspaceRoot}/../pawlib/pawlib/include",
-                "${workspaceRoot}/sandbox-source/include",
-                "${workspaceRoot}/sandbox-tester/include"
+                "${workspaceRoot}/../libdeps/libs/include/**",
+                "${workspaceRoot}/../arctic-tern/arctic-tern/include/**",
+                "${workspaceRoot}/../goldilocks/goldilocks/include/**",
+                "${workspaceRoot}/../iosqueak/iosqueak/include/**",
+                "${workspaceRoot}/../nimbly/nimbly/include/**",
+                "${workspaceRoot}/../onestring/onestring/include/**",
+                //"${workspaceRoot}/../simplexpress/simplexpress/include/**",
+                "${workspaceRoot}/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -96,7 +100,12 @@
                 "path": [
                     "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*",
                     "${workspaceRoot}/../libdeps/libs/include",
-                    "${workspaceRoot}/../pawlib/pawlib/include",
+                    "${workspaceRoot}/../arctic-tern/arctic-tern/include",
+                    "${workspaceRoot}/../goldilocks/goldilocks/include",
+                    "${workspaceRoot}/../iosqueak/iosqueak/include",
+                    "${workspaceRoot}/../nimbly/nimbly/include",
+                    "${workspaceRoot}/../onestring/onestring/include",
+                    //"${workspaceRoot}/../simplexpress/simplexpress/include",
                     "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": true,

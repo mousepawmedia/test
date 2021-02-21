@@ -1,11 +1,10 @@
-# CMake Config for Executable (MousePaw Media Build System)
-# Version: 2.2.1
-# Tailored For: Sandbox
+# CMake Config (MousePaw Media Build System)
+# Version: 3.0.0
 #
 # Author(s): Jason C. McDonald
 
 # LICENSE
-# Copyright (c) 2019 MousePaw Media.
+# Copyright (c) 2021 MousePaw Media.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -38,17 +37,20 @@
 # See https://www.mousepawmedia.com/developers for information
 # on how to contribute to our projects.
 
-# Specify the verison being used as well as the language.
-cmake_minimum_required(VERSION 3.8)
-
 # CHANGEME: Name your project here
 project("Sandbox Tester")
 
-# CHANGEME: Specify output binary name
-set(TARGET_NAME "sandbox-tester")
+# WARNING: Don't modify this file to configure project! See project.conf
 
+# Specify the verison being used.
+cmake_minimum_required(VERSION 3.8)
+
+# Import user-specified library path configuration
 message("Using ${CONFIG_FILENAME}.config")
 include(${CMAKE_HOME_DIRECTORY}/../${CONFIG_FILENAME}.config)
+
+# Import project configuration
+include(${CMAKE_HOME_DIRECTORY}/project.conf)
 
 # Compiler and Version check...
 # Allow Clang 3.4
@@ -117,54 +119,23 @@ elseif(COMPILERTYPE STREQUAL "clang")
 endif()
 
 # CHANGEME: Select appropriate output (lib or bin)
-#set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../lib/${CMAKE_BUILD_TYPE}")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../bin/${CMAKE_BUILD_TYPE}")
+if(ARTIFACT_TYPE STREQUAL "library")
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../lib/${CMAKE_BUILD_TYPE}")
+elseif(ARTIFACT_TYPE STREQUAL "executable")
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../bin/${CMAKE_BUILD_TYPE}")
+endif()
 
 include_directories(include)
 
-# CHANGEME: Find dynamic library dependencies.
-find_library(CAIRO_LIB cairo)
-find_path(CAIRO_INCLUDE_DIR cairo/cairo.h)
+include_directories(${INCLUDE_LIBS})
 
-find_library(SDL2_LIB SDL2)
-find_path(SDL2_INCLUDE_DIR SDL2/SDL.h)
+if(ARTIFACT_TYPE STREQUAL "library")
+    add_library(${TARGET_NAME} ${FILES})
+elseif(ARTIFACT_TYPE STREQUAL "executable")
+    add_executable(${TARGET_NAME} ${FILES})
+endif()
 
-# CHANGEME: Include headers of dependencies.
-include_directories(${CMAKE_HOME_DIRECTORY}/../sandbox-source/include)
-#include_directories(${SIMPLEXPRESS_DIR}/include)
-include_directories(${NIMBLY_DIR}/include)
-include_directories(${GOLDILOCKS_DIR}/include)
-include_directories(${IOSQUEAK_DIR}/include)
-include_directories(${ONESTRING_DIR}/include)
-include_directories(${ARCTICTERN_DIR}/include)
-
-include_directories(${EIGEN_DIR}/include)
-include_directories(${EVENTPP_DIR}/include)
-include_directories(${OPUS_DIR}/include)
-include_directories(${PUGIXML_DIR}/include)
-
-include_directories(${CAIRO_INCLUDE_DIR}/cairo)
-include_directories(${SDL2_INCLUDE_DIR}/SDL2)
-
-#CHANGEME: Select appropriate format.
-#add_library(${TARGET_NAME}
-add_executable(${TARGET_NAME}
-    # CHANGEME: Include files to compile.
-    main.cpp
-)
-
-# CHANGEME: Link against dependencies.
-target_link_libraries(${TARGET_NAME} ${CMAKE_HOME_DIRECTORY}/../sandbox-source/lib/${CMAKE_BUILD_TYPE}/libsandbox.a)
-#target_link_libraries(${TARGET_NAME} ${SIMPLEXPRESS_DIR}/lib/libsimplexpress.a)
-target_link_libraries(${TARGET_NAME} ${NIMBLY_DIR}/lib/libnimbly.a)
-target_link_libraries(${TARGET_NAME} ${GOLDILOCKS_DIR}/lib/libgoldilocks.a)
-target_link_libraries(${TARGET_NAME} ${IOSQUEAK_DIR}/lib/libiosqueak.a)
-
-target_link_libraries(${TARGET_NAME} ${CAIRO_LIB})
-target_link_libraries(${TARGET_NAME} ${SDL2_LIB})
-target_link_libraries(${TARGET_NAME} ${OPUS_DIR}/lib/libopus.a)
-target_link_libraries(${TARGET_NAME} ${PUGIXML_DIR}/lib/libpugixml.a)
-
+target_link_libraries(${TARGET_NAME} ${LINK_LIBS})
 
 if(COMPILERTYPE STREQUAL "clang")
     if(SAN STREQUAL "address")
@@ -188,4 +159,6 @@ if(COMPILERTYPE STREQUAL "clang")
         set_property(TARGET ${TARGET_NAME} APPEND_STRING PROPERTY LINK_FLAGS " -fsanitize=undefined")
         message("Compiling with UndefiniedBehaviorSanitizer.")
     endif()
+elseif(NOT SAN MATCHES "")
+    message("${SAN} is not available with compiler ${COMPILERTYPE}.")
 endif()

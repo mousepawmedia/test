@@ -23,8 +23,9 @@
 
 ##### THIRD-PARTY DEPENDENCIES #####
 #
-# This sets the path to CPGF, Eigen, Opus, and pugixml.
-# The build system will look for 'lib/' and 'include/' at this location.
+# This sets the path to Eigen, eventpp, Opus, and pugixml.
+# The build system will look for 'lib/' and 'include/' at this location,
+# as appropriate to the library.
 #
 # The default for all is '${CMAKE_HOME_DIRECTORY}/../../libdeps/libs', which
 # assumes a copy of the libdeps repository in the same directory as this
@@ -137,3 +138,15 @@ set(NIMBLY_DIR
 
 set(SIMPLEXPRESS_DIR
 	${CMAKE_HOME_DIRECTORY}/../../simplexpress/simplexpress
+
+##### LLVM LIBC++ #####
+#
+# This option asks the Clang compiler to use LLVM's libc++ library.
+# The build system will look for this library in the system paths.
+#
+# If you are not compiling with Clang, this option will be ignored.
+# NOTE: libc++ is already used by default on Mac.
+#
+# Set the option to either `true` or `false` below.
+
+set(LLVM false)
