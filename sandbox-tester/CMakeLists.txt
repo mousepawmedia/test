@@ -39,7 +39,7 @@
 # on how to contribute to our projects.
 
 # Specify the verison being used as well as the language.
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.8)
 
 # CHANGEME: Name your project here
 project("Sandbox Tester")
@@ -131,8 +131,13 @@ find_path(SDL2_INCLUDE_DIR SDL2/SDL.h)
 
 # CHANGEME: Include headers of dependencies.
 include_directories(${CMAKE_HOME_DIRECTORY}/../sandbox-source/include)
-include_directories(${PAWLIB_DIR}/include)
-include_directories(${CPGF_DIR}/include)
+#include_directories(${SIMPLEXPRESS_DIR}/include)
+include_directories(${NIMBLY_DIR}/include)
+include_directories(${GOLDILOCKS_DIR}/include)
+include_directories(${IOSQUEAK_DIR}/include)
+include_directories(${ONESTRING_DIR}/include)
+include_directories(${ARCTICTERN_DIR}/include)
+
 include_directories(${EIGEN_DIR}/include)
 include_directories(${EVENTPP_DIR}/include)
 include_directories(${OPUS_DIR}/include)
@@ -150,10 +155,13 @@ add_executable(${TARGET_NAME}
 
 # CHANGEME: Link against dependencies.
 target_link_libraries(${TARGET_NAME} ${CMAKE_HOME_DIRECTORY}/../sandbox-source/lib/${CMAKE_BUILD_TYPE}/libsandbox.a)
+#target_link_libraries(${TARGET_NAME} ${SIMPLEXPRESS_DIR}/lib/libsimplexpress.a)
+target_link_libraries(${TARGET_NAME} ${NIMBLY_DIR}/lib/libnimbly.a)
+target_link_libraries(${TARGET_NAME} ${GOLDILOCKS_DIR}/lib/libgoldilocks.a)
+target_link_libraries(${TARGET_NAME} ${IOSQUEAK_DIR}/lib/libiosqueak.a)
+
 target_link_libraries(${TARGET_NAME} ${CAIRO_LIB})
 target_link_libraries(${TARGET_NAME} ${SDL2_LIB})
-target_link_libraries(${TARGET_NAME} ${PAWLIB_DIR}/lib/libpawlib.a)
-target_link_libraries(${TARGET_NAME} ${CPGF_DIR}/lib/libcpgf.a)
 target_link_libraries(${TARGET_NAME} ${OPUS_DIR}/lib/libopus.a)
 target_link_libraries(${TARGET_NAME} ${PUGIXML_DIR}/lib/libpugixml.a)
 

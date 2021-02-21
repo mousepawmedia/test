@@ -1,13 +1,13 @@
 /** Hello [Sandbox]
-  * Version: 1.0
-  *
-  * MousePaw Media's own Hello World.
-  *
-  * Author(s): Jason C. McDonald
-  */
+ * Version: 1.0
+ *
+ * MousePaw Media's own Hello World.
+ *
+ * Author(s): Jason C. McDonald
+ */
 
 /* LICENSE (BSD-3-Clause)
- * Copyright (c) 2019 MousePaw Media.
+ * Copyright (c) 2021 MousePaw Media.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,48 +44,42 @@
 #ifndef SANDBOX_TEST_TEST_HPP
 #define SANDBOX_TEST_TEST_HPP
 
-#include "pawlib/goldilocks.hpp"
-#include "pawlib/goldilocks_assertions.hpp"
+#include "goldilocks/assertions.hpp"
+#include "goldilocks/goldilocks.hpp"
 
 class Test_AssertEqual : public Test
 {
-    public:
-    Test_AssertEqual() = default;
+public:
+	Test_AssertEqual() = default;
 
-    testdoc_t get_title() override
-    {
-        return "Test Goldilocks Assert Equal";
-    }
+	testdoc_t get_title() override { return "Test Goldilocks Assert Equal"; }
 
-    testdoc_t get_docs() override
-    {
-        return "Tests the PL_ASSERT_EQUAL with two integers.";
-    }
+	testdoc_t get_docs() override
+	{
+		return "Tests the PL_ASSERT_EQUAL with two integers.";
+	}
 
-    bool run() override
-    {
-        int left = 42;
-        int right = 42;
-        PL_ASSERT_EQUAL(left, right);
-        return true;
-    }
+	bool run() override
+	{
+		int left = 42;
+		int right = 42;
+		PL_ASSERT_EQUAL(left, right);
+		return true;
+	}
 
-    ~Test_AssertEqual() = default;
+	~Test_AssertEqual() = default;
 };
 
 class Test_TestSuite : public TestSuite
 {
-    public:
-    Test_TestSuite() = default;
+public:
+	Test_TestSuite() = default;
 
-    testdoc_t get_title() override
-    {
-        return "Test Golidlocks Tests";
-    }
+	testdoc_t get_title() override { return "Test Golidlocks Tests"; }
 
-    void load_tests() override;
+	void load_tests() override;
 
-    ~Test_TestSuite() = default;
+	~Test_TestSuite() = default;
 };
 
 #endif

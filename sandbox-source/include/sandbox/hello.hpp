@@ -1,13 +1,13 @@
 /** Hello [Sandbox]
-  * Version: 1.0
-  *
-  * MousePaw Media's own Hello World.
-  *
-  * Author(s): Jason C. McDonald
-  */
+ * Version: 1.0
+ *
+ * MousePaw Media's own Hello World.
+ *
+ * Author(s): Jason C. McDonald
+ */
 
 /* LICENSE (BSD-3-Clause)
- * Copyright (c) 2019 MousePaw Media.
+ * Copyright (c) 2021 MousePaw Media.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,8 +44,6 @@
 #ifndef SANDBOX_HELLO_HPP
 #define SANDBOX_HELLO_HPP
 
-#include "pawlib/iochannel.hpp"
-
 void hello();
 
-#endif // SANDBOX_HELLO_HPP
+#endif  // SANDBOX_HELLO_HPP

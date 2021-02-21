@@ -24,17 +24,13 @@
 ##### THIRD-PARTY DEPENDENCIES #####
 #
 # This sets the path to CPGF, Eigen, Opus, and pugixml.
-# The build system will look for `lib/` and `include/' at this location.
+# The build system will look for 'lib/' and 'include/' at this location.
 #
 # The default for all is '${CMAKE_HOME_DIRECTORY}/../../libdeps/libs', which
 # assumes a copy of the libdeps repository in the same directory as this
 # repository folder.
 #
 # 'make <library>' or 'make all' would need to be run in libdeps first.
-
-set(CPGF_DIR
-	${CMAKE_HOME_DIRECTORY}/../../libdeps/libs
-)
 
 set(EIGEN_DIR
 	${CMAKE_HOME_DIRECTORY}/../../libdeps/libs
@@ -52,18 +48,92 @@ set(PUGIXML_DIR
 	${CMAKE_HOME_DIRECTORY}/../../libdeps/libs
 )
 
-##### PAWLIB #####
+##### ARCTIC TERN #####
 #
-# This sets the path to PawLIB.
-# The build system will look for 'lib/' and 'include/' at this location.
+# This sets the path to Arctic Tern.
+# The build system will look for 'include/' at this location.
 #
-# The default is '${CMAKE_HOME_DIRECTORY}/../../pawlib/pawlib', which
-# assumes a copy of the pawlib git repository in the same directory as this
+# The default is '${CMAKE_HOME_DIRECTORY}/../../arctic-tern/arctic-tern', which
+# assumes a copy of the Arctic Tern git repository in the same directory as this
 # repository folder.
 #
-# 'make ready' would need to be run in that repository to generate the
-# library.
+# 'make ready' would need to be run in that repository to move the header files
+# into the appropriate directories.
 
-set(PAWLIB_DIR
-	${CMAKE_HOME_DIRECTORY}/../../pawlib/pawlib
-)
+set(ARCTICTERN_DIR
+	${CMAKE_HOME_DIRECTORY}/../../arctic-tern/arctic-tern
+
+##### GOLDILOCKS #####
+#
+# This sets the path to Goldilocks.
+# The build system will look for 'include/' and 'lib/' at this location.
+#
+# The default is '${CMAKE_HOME_DIRECTORY}/../../goldilocks/goldilocks', which
+# assumes a copy of the Goldilocks git repository in the same directory as this
+# repository folder.
+#
+# 'make ready' would need to be run in that repository to move the header files
+# into the appropriate directories.
+
+set(GOLDILOCKS_DIR
+	${CMAKE_HOME_DIRECTORY}/../../goldilocks/goldilocks
+
+##### IOSQUEAK #####
+#
+# This sets the path to IOSqueak.
+# The build system will look for 'include/' and 'lib/' at this location.
+#
+# The default is '${CMAKE_HOME_DIRECTORY}/../../iosqueak/iosqueak', which
+# assumes a copy of the IOSqueak git repository in the same directory as this
+# repository folder.
+#
+# 'make ready' would need to be run in that repository to move the header files
+# into the appropriate directories.
+
+set(IOSQUEAK_DIR
+	${CMAKE_HOME_DIRECTORY}/../../iosqueak/iosqueak
+
+##### ONESTRING #####
+#
+# This sets the path to Onestring.
+# The build system will look for 'include/' at this location.
+#
+# The default is '${CMAKE_HOME_DIRECTORY}/../../onestring/onestring', which
+# assumes a copy of the Onestring git repository in the same directory as this
+# repository folder.
+#
+# 'make ready' would need to be run in that repository to move the header files
+# into the appropriate directories.
+
+set(ONESTRING_DIR
+	${CMAKE_HOME_DIRECTORY}/../../onestring/onestring
+
+##### NIMBLY #####
+#
+# This sets the path to Nimbly.
+# The build system will look for 'include/' at this location.
+#
+# The default is '${CMAKE_HOME_DIRECTORY}/../../nimbly/nimbly', which
+# assumes a copy of the Nimbly git repository in the same directory as this
+# repository folder.
+#
+# 'make ready' would need to be run in that repository to move the header files
+# into the appropriate directories.
+
+set(NIMBLY_DIR
+	${CMAKE_HOME_DIRECTORY}/../../nimbly/nimbly
+
+##### SIMPLEXPRESS #####
+#
+# This sets the path to SIMPLEXpress.
+# The build system will look for 'include/' at this location.
+#
+# The default is '${CMAKE_HOME_DIRECTORY}/../../simplexpress/simplexpress', which
+# assumes a copy of the Nimbly git repository in the same directory as this
+# repository folder.
+#
+# 'make ready' would need to be run in that repository to move the header files
+# into the appropriate directories.
+
+set(SIMPLEXPRESS_DIR
+	${CMAKE_HOME_DIRECTORY}/../../simplexpress/simplexpress

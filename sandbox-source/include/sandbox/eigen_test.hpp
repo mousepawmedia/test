@@ -1,15 +1,15 @@
 /** Eigen Test [Sandbox]
-  * Version: 1.0
-  *
-  * Test program for Eigen.
-  *
-  * Author(s): Jason C. McDonald
-  *
-  * Based on https://eigen.tuxfamily.org/dox/GettingStarted.html
-  */
+ * Version: 1.0
+ *
+ * Test program for Eigen.
+ *
+ * Author(s): Jason C. McDonald
+ *
+ * Based on https://eigen.tuxfamily.org/dox/GettingStarted.html
+ */
 
 /* LICENSE (BSD-3-Clause)
- * Copyright (c) 2019 MousePaw Media.
+ * Copyright (c) 2021 MousePaw Media.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,8 +46,6 @@
 #ifndef SANDBOX_EIGEN_TEST_HPP
 #define SANDBOX_EIGEN_TEST_HPP
 
-#include <iostream>
-
 void eigen_test();
 
-#endif // SANDBOX_EIGEN_TEST_HPP
+#endif  // SANDBOX_EIGEN_TEST_HPP

@@ -1,9 +1,9 @@
 #include "sandbox/hello.hpp"
 
+#include "iosqueak/channel.hpp"
+
 void hello()
 {
-    ioc << IOFormatTextFG::blue
-        << IOFormatTextAttr::bold
-        << "Hello, world!"
-        << IOCtrl::endl;
+	channel << IOFormatTextFG::blue << IOFormatTextAttr::bold << "Hello, world!"
+			<< IOCtrl::endl;
 }

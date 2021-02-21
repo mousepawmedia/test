@@ -32,4 +32,16 @@
     "files.trimTrailingWhitespace": true,
 
     "restructuredtext.builtDocumentationPath": "${workspaceRoot}/docs/build/html",
+    "cmake.configureOnOpen": false,
+    "restructuredtext.confPath": "",
+    "restructuredtext.languageServer.disabled": true,
+    "cSpell.words": [
+        "anari",
+        "goldilocks",
+        "iosqueak",
+        "mousepaw",
+        "nimbly",
+        "onestring",
+        "simplexpress"
+    ],
 }
