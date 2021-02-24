@@ -1,5 +1,5 @@
 # Top Level Makefile (MousePaw Media Build System)
-# Version: 2.2.0
+# Version: 3.1.0
 # Tailored For: Sandbox
 #
 # Author(s): Jason C. McDonald
@@ -38,9 +38,9 @@
 # See https://www.mousepawmedia.com/developers for information
 # on how to contribute to our projects.
 
-# CHANGEME: Project name
+# CHANGE: Project name
 PROJECT = Sandbox
-# CHANGEME: Project filename
+# CHANGE: Project filename
 NAME = sandbox
 
 MK_DIR = @cmake -E make_directory
@@ -91,6 +91,9 @@ help:
 clean:
 	$(MAKE) clean -C $(NAME)-source
 	$(MAKE) clean -C $(NAME)-tester
+	$(RM) tester
+	$(RM) tester_debug
+	$(RM_DIR) $(NAME)
 
 cleanall: clean
 	$(MAKE) clean -C docs
@@ -98,10 +101,12 @@ cleanall: clean
 cleandebug:
 	$(MAKE) cleandebug -C $(NAME)-source
 	$(MAKE) cleandebug -C $(NAME)-tester
+	$(RM) tester_debug
 
 cleanrelease:
 	$(MAKE) cleanrelease -C $(NAME)-source
 	$(MAKE) cleanrelease -C $(NAME)-tester
+	$(RM) tester
 
 docs:
 	$(MAKE) html -C docs

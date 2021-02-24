@@ -1,6 +1,6 @@
 #include "sandbox/eigen_test.hpp"
 
-#include <Eigen/Dense>
+#include "Eigen/Dense"
 
 #include "iosqueak/channel.hpp"
 

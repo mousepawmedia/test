@@ -1,21 +1,29 @@
-# PROJECT CONFIGURATION
-# Modify this file to configure the CMake build.
+# CMake Config (MousePaw Media Build System)
+# Version: 3.1.0
 
-# Specify output binary name
-set(TARGET_NAME "sandbox")
+##### TEMPLATE! Change to your purposes. #####
 
-# Project artifact type
+# CHANGE: Name your project here
+project("Project")
+
+# Specify the verison being used.
+cmake_minimum_required(VERSION 3.8)
+
+# CHANGE: Specify output binary name
+set(TARGET_NAME "project_name")
+
+# SELECT: Project artifact type
 set(ARTIFACT_TYPE "library")
 #set(ARTIFACT_TYPE "executable")
 
-# Find dynamic library dependencies.
+# CHANGE: Find dynamic library dependencies.
 find_library(CAIRO_LIB cairo)
 find_path(CAIRO_INCLUDE_DIR cairo/cairo.h)
 
 find_library(SDL2_LIB SDL2)
 find_path(SDL2_INCLUDE_DIR SDL2/SDL.h)
 
-# Include headers of dependencies.
+# CHANGE: Include headers of dependencies.
 set(INCLUDE_LIBS
     # ${SIMPLEXPRESS_DIR}/include
     ${NIMBLY_DIR}/include
@@ -31,7 +39,7 @@ set(INCLUDE_LIBS
     ${SDL2_INCLUDE_DIR}/SDL2
 )
 
-# Include files to compile.
+# CHANGE: Include files to compile.
 set(FILES
     include/sandbox/eigen_test.hpp
     include/sandbox/hello.hpp
@@ -42,7 +50,7 @@ set(FILES
     src/test_test.cpp
 )
 
-# Link against dependencies.
+# CHANGE: Link against dependencies.
 set(LINK_LIBS
     # ${SIMPLEXPRESS_DIR}/lib/libsimplexpress.a
     ${NIMBLY_DIR}/lib/libnimbly.a
@@ -54,3 +62,6 @@ set(LINK_LIBS
     ${OPUS_DIR}/lib/libopus.a
     ${PUGIXML_DIR}/lib/libpugixml.a
 )
+
+# Imports build script. (Change if necessary to point to build.cmake)
+include(${CMAKE_HOME_DIRECTORY}/../build_system/build.cmake)

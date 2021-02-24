@@ -1,11 +1,10 @@
 # Inner Makefile (MousePaw Media Build System)
-# Version: 2.2.0
-# Tailored For: Sandbox
+# Version: 3.1.0
 #
 # Author(s): Jason C. McDonald
 
 # LICENSE
-# Copyright (c) 2019 MousePaw Media.
+# Copyright (c) 2021 MousePaw Media.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -38,9 +37,9 @@
 # See https://www.mousepawmedia.com/developers for information
 # on how to contribute to our projects.
 
-# CHANGEME: Project name
+# CHANGE: Project name
 NAME = "Sandbox (Tester)"
-# CHANGEME: Set to 'lib' or 'bin'
+# CHANGE: Set to 'lib' or 'bin'
 BUILD_DIR = bin
 
 CMAKE = cmake ../.. -G"Unix Makefiles"
