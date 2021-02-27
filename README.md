@@ -9,7 +9,9 @@ If you wish to use our build system in your own project, you will need to
 copy the following files:
 
 * build_system/build.cmake
-* build_system/CMakeLists.txt (template only)
+* build_system/inner.mk
+* build_system/outer.mk
+* build_system/templates/ (these are templates for CMakeLists.txt and Makefile)
 * sandbox-source/Makefile
 * sandbox-source/CMakeLists.txt
 * sandbox-tester/Makefile

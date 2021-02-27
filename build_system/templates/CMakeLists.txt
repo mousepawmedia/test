@@ -1,13 +1,22 @@
 # CMake Config (MousePaw Media Build System)
-# Version: 3.1.0
+# Version: 3.2.0
 
-##### TEMPLATE! Change to your purposes. #####
+######################
+# USAGE INSTRUCTIONS
+# 1. Place in the folder containing your include/ and/or src/ directories.
+# 2. Customize the values below to suit your purposes.
+# 3. Delete these instructions in your final file.
+######################
 
 # CHANGE: Name your project here
 project("Project")
 
 # Specify the verison being used.
 cmake_minimum_required(VERSION 3.8)
+
+# Import user-specified library path configuration
+message("Using ${CONFIG_FILENAME}.config")
+include(${CMAKE_HOME_DIRECTORY}/../${CONFIG_FILENAME}.config)
 
 # CHANGE: Specify output binary name
 set(TARGET_NAME "project_name")
@@ -25,7 +34,7 @@ find_path(SDL2_INCLUDE_DIR SDL2/SDL.h)
 
 # CHANGE: Include headers of dependencies.
 set(INCLUDE_LIBS
-    # ${SIMPLEXPRESS_DIR}/include
+    ${SIMPLEXPRESS_DIR}/include
     ${NIMBLY_DIR}/include
     ${GOLDILOCKS_DIR}/include
     ${IOSQUEAK_DIR}/include
@@ -52,7 +61,7 @@ set(FILES
 
 # CHANGE: Link against dependencies.
 set(LINK_LIBS
-    # ${SIMPLEXPRESS_DIR}/lib/libsimplexpress.a
+    ${SIMPLEXPRESS_DIR}/lib/libsimplexpress.a
     ${NIMBLY_DIR}/lib/libnimbly.a
     ${GOLDILOCKS_DIR}/lib/libgoldilocks.a
     ${IOSQUEAK_DIR}/lib/libiosqueak.a

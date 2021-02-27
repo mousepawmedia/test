@@ -1,5 +1,5 @@
 # CMake Config (MousePaw Media Build System)
-# Version: 3.1.0
+# Version: 3.2.0
 
 # CHANGE: Name your project here
 project("Sandbox Tester")
@@ -28,7 +28,7 @@ find_path(SDL2_INCLUDE_DIR SDL2/SDL.h)
 # CHANGE: Include headers of dependencies.
 set(INCLUDE_LIBS
     ${CMAKE_HOME_DIRECTORY}/../sandbox-source/include
-    # ${SIMPLEXPRESS_DIR}/include
+    ${SIMPLEXPRESS_DIR}/include
     ${NIMBLY_DIR}/include
     ${GOLDILOCKS_DIR}/include
     ${IOSQUEAK_DIR}/include
@@ -50,7 +50,7 @@ set(FILES
 # CHANGE: Link against dependencies.
 set(LINK_LIBS
     ${CMAKE_HOME_DIRECTORY}/../sandbox-source/lib/${CMAKE_BUILD_TYPE}/libsandbox.a
-    # ${SIMPLEXPRESS_DIR}/lib/libsimplexpress.a
+    ${SIMPLEXPRESS_DIR}/lib/libsimplexpress.a
     ${NIMBLY_DIR}/lib/libnimbly.a
     ${GOLDILOCKS_DIR}/lib/libgoldilocks.a
     ${IOSQUEAK_DIR}/lib/libiosqueak.a

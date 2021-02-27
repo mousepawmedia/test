@@ -1,10 +1,10 @@
 # CMake Config (MousePaw Media Build System)
-# Version: 3.1.0
+# Version: 3.2.0
 
 # CHANGE: Name your project here
 project("Sandbox")
 
-# Specify the verison being used.
+# Specify the version being used.
 cmake_minimum_required(VERSION 3.8)
 
 # Import user-specified library path configuration
@@ -27,7 +27,7 @@ find_path(SDL2_INCLUDE_DIR SDL2/SDL.h)
 
 # CHANGE: Include headers of dependencies.
 set(INCLUDE_LIBS
-    # ${SIMPLEXPRESS_DIR}/include
+    ${SIMPLEXPRESS_DIR}/include
     ${NIMBLY_DIR}/include
     ${GOLDILOCKS_DIR}/include
     ${IOSQUEAK_DIR}/include
@@ -54,7 +54,7 @@ set(FILES
 
 # CHANGE: Link against dependencies.
 set(LINK_LIBS
-    # ${SIMPLEXPRESS_DIR}/lib/libsimplexpress.a
+    ${SIMPLEXPRESS_DIR}/lib/libsimplexpress.a
     ${NIMBLY_DIR}/lib/libnimbly.a
     ${GOLDILOCKS_DIR}/lib/libgoldilocks.a
     ${IOSQUEAK_DIR}/lib/libiosqueak.a
