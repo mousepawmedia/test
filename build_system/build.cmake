@@ -103,7 +103,7 @@ elseif(COMPILERTYPE STREQUAL "clang")
     #set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ")
 endif()
 
-# CHANGEME: Select appropriate output (lib or bin)
+# Select appropriate output (lib or bin)
 if(ARTIFACT_TYPE STREQUAL "library")
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../lib/${CMAKE_BUILD_TYPE}")
 elseif(ARTIFACT_TYPE STREQUAL "executable")
