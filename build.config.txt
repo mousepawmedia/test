@@ -1,14 +1,6 @@
 # Build Configuration Template (MousePaw Media Build System)
 # Version: 3.2.0
 
-######################
-# USAGE INSTRUCTIONS
-# This file is a template for users to override your default.config.
-# Set the defaults here to match those from your default.config.
-#
-# Remove these instructions after putting the file in place.
-######################
-
 ##### PATH CONFIGURATIONS ######
 #
 # Make a copy of this file and save it in the root of the repository
