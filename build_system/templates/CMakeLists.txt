@@ -1,5 +1,5 @@
 # CMake Config (MousePaw Media Build System)
-# Version: 3.2.0
+# Version: 3.3.0
 
 ######################
 # USAGE INSTRUCTIONS
@@ -61,15 +61,15 @@ set(FILES
 
 # CHANGE: Link against dependencies.
 set(LINK_LIBS
-    ${SIMPLEXPRESS_DIR}/lib/libsimplexpress.a
-    ${NIMBLY_DIR}/lib/libnimbly.a
-    ${GOLDILOCKS_DIR}/lib/libgoldilocks.a
-    ${IOSQUEAK_DIR}/lib/libiosqueak.a
+    ${SIMPLEXPRESS_DIR}/lib/libsimplexpress
+    ${NIMBLY_DIR}/lib/libnimbly
+    ${GOLDILOCKS_DIR}/lib/libgoldilocks
+    ${IOSQUEAK_DIR}/lib/libiosqueak
 
     ${CAIRO_LIB}
     ${SDL2_LIB}
-    ${OPUS_DIR}/lib/libopus.a
-    ${PUGIXML_DIR}/lib/libpugixml.a
+    ${OPUS_DIR}/lib/libopus
+    ${PUGIXML_DIR}/lib/libpugixml
 )
 
 # Imports build script. (Change if necessary to point to build.cmake)

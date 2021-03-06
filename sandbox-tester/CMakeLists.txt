@@ -1,5 +1,5 @@
 # CMake Config (MousePaw Media Build System)
-# Version: 3.2.0
+# Version: 3.3.0
 
 # CHANGE: Name your project here
 project("Sandbox Tester")
@@ -18,47 +18,54 @@ set(TARGET_NAME "sandbox-tester")
 #set(ARTIFACT_TYPE "library")
 set(ARTIFACT_TYPE "executable")
 
-# CHANGE: Find dynamic library dependencies.
-find_library(CAIRO_LIB cairo)
-find_path(CAIRO_INCLUDE_DIR cairo/cairo.h)
-
-find_library(SDL2_LIB SDL2)
-find_path(SDL2_INCLUDE_DIR SDL2/SDL.h)
-
-# CHANGE: Include headers of dependencies.
+# CHANGE: Library dependencies to include from.
 set(INCLUDE_LIBS
-    ${CMAKE_HOME_DIRECTORY}/../sandbox-source/include
-    ${SIMPLEXPRESS_DIR}/include
-    ${NIMBLY_DIR}/include
-    ${GOLDILOCKS_DIR}/include
-    ${IOSQUEAK_DIR}/include
-    ${ONESTRING_DIR}/include
-    ${ARCTICTERN_DIR}/include
-    ${EIGEN_DIR}/include
-    ${EVENTPP_DIR}/include
-    ${OPUS_DIR}/include
-    ${PUGIXML_DIR}/include
-    ${CAIRO_INCLUDE_DIR}/cairo
-    ${SDL2_INCLUDE_DIR}/SDL2
+    sandbox
+    simplexpress
+    nimbly
+    goldilocks
+    iosqueak
+    onestring
+    arctictern
+    eigen
+    eventpp
+    opus
+    pugixml
+    cairo
+    sdl2
+)
+
+# CHANGE: Library dependencies to include against.
+set(LINK_LIBS
+    sandbox
+    simplexpress
+    nimbly
+    goldilocks
+    iosqueak
+    cairo
+    SDL2
+    opus
+    pugixml
+)
+
+# CHANGE: Override library directories if necessary.
+# Uses value from your .config file first.
+set(sandbox_dir ../sandbox-source)
+
+# CHANGE: Override include directories as necessary.
+# Uses '<library>_dir/include' by default
+find_path(cairo_include cairo/cairo.h)
+set(cairo_include ${cairo_include}/cairo)
+find_path(sdl2_include SDL2/SDL.h)
+set(sdl2_include ${sdl2_include}/SDL2)
+
+# CHANGE: Additional directories to include.
+set(ADDITIONAL_INCLUDES
 )
 
 # CHANGE: Include files to compile.
 set(FILES
     main.cpp
-)
-
-# CHANGE: Link against dependencies.
-set(LINK_LIBS
-    ${CMAKE_HOME_DIRECTORY}/../sandbox-source/lib/${CMAKE_BUILD_TYPE}/libsandbox.a
-    ${SIMPLEXPRESS_DIR}/lib/libsimplexpress.a
-    ${NIMBLY_DIR}/lib/libnimbly.a
-    ${GOLDILOCKS_DIR}/lib/libgoldilocks.a
-    ${IOSQUEAK_DIR}/lib/libiosqueak.a
-
-    ${CAIRO_LIB}
-    ${SDL2_LIB}
-    ${OPUS_DIR}/lib/libopus.a
-    ${PUGIXML_DIR}/lib/libpugixml.a
 )
 
 # Imports build script. (Change if necessary to point to build.cmake)

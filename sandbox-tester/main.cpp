@@ -48,6 +48,7 @@
 #include "iosqueak/channel.hpp"
 
 #include "sandbox/eigen_test.hpp"
+#include "sandbox/sdl2_hello.hpp"
 #include "sandbox/hello.hpp"
 #include "sandbox/test_test.hpp"
 
@@ -58,6 +59,7 @@
 void test_code()
 {
 	eigen_test();
+    sdl2_hello();
 	// hello();
 	return;
 }

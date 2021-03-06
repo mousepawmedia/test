@@ -1,5 +1,5 @@
 # CMake Build Script (MousePaw Media Build System)
-# Version: 3.2.0
+# Version: 3.3.0
 
 # LICENSE
 # Copyright (c) 2021 MousePaw Media.
@@ -110,7 +110,22 @@ endif()
 
 include_directories(include)
 
-include_directories(${INCLUDE_LIBS})
+foreach(DEP IN ITEMS ${INCLUDE_LIBS})
+    if(DEFINED ${DEP}_include)
+        include_directories("${${DEP}_include}")
+    else()
+        include_directories("${${DEP}_dir}/include")
+    endif()
+endforeach()
+
+foreach(DEP IN ITEMS ${LINK_LIBS})
+    find_library(${DEP}_lib NAMES ${DEP} PATHS "${${DEP}_dir}" PATH_SUFFIXES lib lib/${CMAKE_BUILD_TYPE})
+    set(FOUND_LINK_LIBS ${FOUND_LINK_LIBS} "${${DEP}_lib}")
+endforeach()
+
+if(DEFINED ${ADDITIONAL_INCLUDES})
+    include_directories(${ADDITIONAL_INCLUDES})
+endif()
 
 if(ARTIFACT_TYPE STREQUAL "library")
     add_library(${TARGET_NAME} ${FILES})
@@ -118,7 +133,7 @@ elseif(ARTIFACT_TYPE STREQUAL "executable")
     add_executable(${TARGET_NAME} ${FILES})
 endif()
 
-target_link_libraries(${TARGET_NAME} ${LINK_LIBS})
+target_link_libraries(${TARGET_NAME} ${FOUND_LINK_LIBS})
 
 if(COMPILERTYPE STREQUAL "clang")
     if(SAN STREQUAL "address")

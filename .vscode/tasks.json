@@ -33,7 +33,7 @@
         {
             "label": "Run Debug",
             "type": "shell",
-            "command": "./sandbox_debug",
+            "command": "./tester_debug",
             "group": {
                 "kind": "test",
                 "isDefault": true
@@ -43,7 +43,7 @@
         {
             "label": "Run Release",
             "type": "shell",
-            "command": "./sandbox",
+            "command": "./tester",
             "group": "test",
             "dependsOn": "Build Release"
         },
