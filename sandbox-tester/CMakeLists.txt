@@ -21,7 +21,7 @@ set(ARTIFACT_TYPE "executable")
 # CHANGE: Library dependencies to include from.
 set(INCLUDE_LIBS
     sandbox
-    simplexpress
+    #simplexpress
     nimbly
     goldilocks
     iosqueak
@@ -38,7 +38,7 @@ set(INCLUDE_LIBS
 # CHANGE: Library dependencies to include against.
 set(LINK_LIBS
     sandbox
-    simplexpress
+    #simplexpress
     nimbly
     goldilocks
     iosqueak

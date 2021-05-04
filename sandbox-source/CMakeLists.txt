@@ -20,7 +20,7 @@ set(ARTIFACT_TYPE "library")
 
 # CHANGE: Header-only library dependencies.
 set(INCLUDE_LIBS
-    simplexpress
+    #simplexpress
     nimbly
     goldilocks
     iosqueak
@@ -36,7 +36,7 @@ set(INCLUDE_LIBS
 
 # CHANGE: Link against dependencies.
 set(LINK_LIBS
-    simplexpress
+    #simplexpress
     nimbly
     goldilocks
     iosqueak
