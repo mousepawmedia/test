@@ -1,7 +1,13 @@
 stages:          # List of stages for jobs, and their order of execution
   - build
+  - results
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
     - make
+
+results-job:
+  stage: results
+  script:
+    - echo "Everything is fine."
